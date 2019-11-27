@@ -5,11 +5,7 @@ services:
     container_name: node1.testnet.geodb.com
     image: ethereum/client-go:alltools-stable
     working_dir: /
-    # command: >
-    #   /bin/sh -c
-    #   "ls -lah /credentials;
-    #   cat /credentials/private_key.txt;
-    #   cat /credentials/password.txt;"
+    restart: always
     command: >
       /bin/sh -c
       "
@@ -28,6 +24,7 @@ services:
     container_name: node2.testnet.geodb.com
     image: ethereum/client-go:alltools-stable
     working_dir: /
+    restart: always
     command: >
       /bin/sh -c
       "
