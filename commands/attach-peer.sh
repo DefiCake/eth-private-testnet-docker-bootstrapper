@@ -1,5 +1,7 @@
 #!/bin/sh
 sleep 10
+
+# Removes double quotes from info.txt
 fileInfo=`cat /boot-node-info/info.txt`
 temp="${fileInfo%\"}"
 enode="${temp#\"}"
