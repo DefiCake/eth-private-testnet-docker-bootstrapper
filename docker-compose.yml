@@ -1,0 +1,44 @@
+version: '2'
+
+services:
+  node1.testnet.geodb.com:
+    container_name: node1.testnet.geodb.com
+    image: ethereum/client-go:alltools-stable
+    working_dir: /
+    # command: >
+    #   /bin/sh -c
+    #   "ls -lah /credentials;
+    #   cat /credentials/private_key.txt;
+    #   cat /credentials/password.txt;"
+    command: >
+      /bin/sh -c
+      "
+      . /commands/get-boot-node-info.sh & 
+      . /commands/start.sh;
+      "
+    volumes:
+      - ./credentials:/credentials
+      - ./datadir:/datadir
+      - ./genesis:/genesis
+      - ./commands:/commands
+      - ./boot-node-info:/boot-node-info
+    ports:
+      - 30303:30303
+  node2.testnet.geodb.com:
+    container_name: node2.testnet.geodb.com
+    image: ethereum/client-go:alltools-stable
+    working_dir: /
+    command: >
+      /bin/sh -c
+      "
+      . /commands/attach-peer.sh
+      "
+    depends_on:
+      - node1.testnet.geodb.com
+    volumes:
+      - ./boot-node-info:/boot-node-info
+      - ./genesis:/genesis
+      - ./commands:/commands
+      - ./light-node-datadir:/datadir
+    ports:
+      - 7545:7545
