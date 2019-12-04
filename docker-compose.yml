@@ -1,4 +1,4 @@
-version: '2'
+version: '2.1'
 
 services:
   node1.testnet.geodb.com:
@@ -20,6 +20,12 @@ services:
       - ./boot-node-info:/boot-node-info
     ports:
       - 30303:30303
+    healthcheck:
+      test: ['CMD', 'cat', '/boot-node-info/enr']
+      interval: 5s
+      timeout: 1s
+      retries: 20
+
   node2.testnet.geodb.com:
     container_name: node2.testnet.geodb.com
     image: ethereum/client-go:alltools-stable
@@ -31,7 +37,8 @@ services:
       . /commands/attach-peer.sh
       "
     depends_on:
-      - node1.testnet.geodb.com
+      node1.testnet.geodb.com:
+        condition: service_healthy
     volumes:
       - ./boot-node-info:/boot-node-info
       - ./genesis:/genesis
