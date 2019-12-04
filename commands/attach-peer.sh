@@ -8,7 +8,7 @@ networkId=`cat /boot-node-info/network`
 
 geth --nousb --datadir ./datadir init /genesis/genesis.json
 
-echo "Attaching peer to enode ${enode}"
+echo "Attaching peer to ${enode}"
 echo "with network ID ${networkId}"
 
 geth --nousb --datadir /datadir --bootnodes $enode --networkid ${networkId} \
