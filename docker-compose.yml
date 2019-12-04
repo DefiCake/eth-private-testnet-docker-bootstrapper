@@ -43,6 +43,6 @@ services:
       - ./boot-node-info:/boot-node-info
       - ./genesis:/genesis
       - ./commands:/commands
-      - ./light-node-datadir:/datadir
+      - ./member-node-datadir:/datadir
     ports:
       - 7545:7545

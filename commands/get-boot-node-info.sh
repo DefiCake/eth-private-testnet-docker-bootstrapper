@@ -15,5 +15,3 @@ while [ "$?" -ne "0" ]; do
     geth attach /datadir/geth.ipc --exec 'admin.nodeInfo.enr' > /boot-node-info/enr && \
     geth attach /datadir/geth.ipc --exec 'admin.nodeInfo.protocols.eth.network' > /boot-node-info/network
 done
-
-echo ${count} > /count.txt
