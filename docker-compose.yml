@@ -46,3 +46,4 @@ services:
       - ./member-node-datadir:/datadir
     ports:
       - 7545:7545
+      - 7546:7546
