@@ -6,7 +6,7 @@ geth --nousb --datadir /datadir init /genesis/genesis.json;
 account=`geth account list --keystore /datadir/keystore | tail -n 1 | sed 's/^[^{]*{\([^{}]*\)}.*/\1/'`
 account="0x${account}"
 
-networkId=`cat /credentials/networkId.txt`
+networkId=`cat /credentials/network.txt`
 
 geth --nousb --datadir /datadir --nat extip:`hostname -i` \
     --unlock ${account} \
