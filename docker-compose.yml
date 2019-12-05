@@ -21,7 +21,7 @@ services:
     ports:
       - 30303:30303
     healthcheck:
-      test: ['CMD', 'cat', '/boot-node-info/enr']
+      test: 'cat /boot-node-info/enode && echo "Cool, it works!"'
       interval: 5s
       timeout: 1s
       retries: 20
