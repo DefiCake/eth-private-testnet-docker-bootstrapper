@@ -6,7 +6,10 @@ temp="${enode%\"}"
 enode="${temp#\"}"
 networkId=`cat /boot-node-info/network`
 
-geth --nousb --datadir ./datadir init /genesis/genesis.json
+if [ ! -d "/datadir/geth" ]; then
+    echo "Initializing /datadir for member node"
+    geth --nousb --datadir /datadir init /genesis/genesis.json;
+fi
 
 echo "Attaching peer to ${enode}"
 echo "with network ID ${networkId}"

@@ -1,7 +1,11 @@
 #!/bin/bash
-geth --nousb --datadir /datadir account import /credentials/private_key.txt \
+
+if [ ! -d "/datadir/geth" ]; then
+    echo "Initializing /datadir for master node"
+    geth --nousb --datadir /datadir account import /credentials/private_key.txt \
     --password /credentials/password.txt;
-geth --nousb --datadir /datadir init /genesis/genesis.json;
+    geth --nousb --datadir /datadir init /genesis/genesis.json;
+fi
 
 account=`geth account list --keystore /datadir/keystore | tail -n 1 | sed 's/^[^{]*{\([^{}]*\)}.*/\1/'`
 account="0x${account}"
