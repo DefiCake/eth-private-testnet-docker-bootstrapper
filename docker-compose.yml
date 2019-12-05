@@ -3,7 +3,7 @@ version: '2.1'
 services:
   node1.testnet.geodb.com:
     container_name: node1.testnet.geodb.com
-    image: ethereum/client-go:alltools-stable
+    image: ethereum/client-go:alltools-latest
     working_dir: /
     restart: always
     command: >
@@ -28,7 +28,7 @@ services:
 
   node2.testnet.geodb.com:
     container_name: node2.testnet.geodb.com
-    image: ethereum/client-go:alltools-stable
+    image: ethereum/client-go:alltools-latest
     working_dir: /
     restart: always
     command: >

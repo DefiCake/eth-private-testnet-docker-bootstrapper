@@ -8,7 +8,7 @@ account="0x${account}"
 
 networkId=`cat /credentials/network.txt`
 
-geth --nousb --datadir /datadir --nat extip:`hostname -i` \
+geth --nousb --datadir /datadir --nat extip:`hostname -i` --verbosity 4 \
     --unlock ${account} \
     --password /credentials/password.txt \
     --mine --minerthreads=1 --miner.gasprice 0  \
