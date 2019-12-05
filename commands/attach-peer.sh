@@ -11,7 +11,7 @@ geth --nousb --datadir ./datadir init /genesis/genesis.json
 echo "Attaching peer to ${enode}"
 echo "with network ID ${networkId}"
 
-geth --nousb --datadir /datadir --verbosity 4 \
+geth --nousb --datadir /datadir \
     --bootnodes $enode --networkid ${networkId} \
     --rpc --rpcport "7545" --rpcaddr "0.0.0.0" --rpccorsdomain "*" \
     --rpcapi eth,net,web3,txpool \

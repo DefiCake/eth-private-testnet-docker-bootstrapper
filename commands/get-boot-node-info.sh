@@ -1,4 +1,7 @@
 #!/bin/bash
+rm /boot-node-info/enode
+rm /boot-node-info/network
+
 sleep 5
 
 count=0
