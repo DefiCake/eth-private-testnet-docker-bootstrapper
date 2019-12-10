@@ -1,9 +1,6 @@
 #!/bin/bash
 rm /boot-node-info/enode
 rm /boot-node-info/network
-
-sleep 5
-
 count=0
 
 geth attach /datadir/geth.ipc --exec 'admin.nodeInfo.enode' > /boot-node-info/enode && \
@@ -18,3 +15,5 @@ while [ "$?" -ne "0" ]; do
     geth attach /datadir/geth.ipc --exec 'admin.nodeInfo.enode' > /boot-node-info/enode && \
     geth attach /datadir/geth.ipc --exec 'admin.nodeInfo.protocols.eth.network' > /boot-node-info/network
 done
+
+echo "Node info succesfully generated"
