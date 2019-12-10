@@ -1,6 +1,4 @@
 #!/bin/sh
-# sleep 10s
-
 # Removes double quotes from enode
 enode=`cat /boot-node-info/enode`
 temp="${enode%\"}"

@@ -24,9 +24,9 @@ services:
     ports:
       - 30303:30303
     healthcheck:
-      test: 'sleep 4s && cat /boot-node-info/enode && cat /boot-node-info/network'
+      test: 'cat /boot-node-info/enode && cat /boot-node-info/network'
       interval: 5s
-      timeout: 5s
+      timeout: 1s
       retries: 20
 
   node2.testnet.geodb.com:
