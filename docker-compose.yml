@@ -37,6 +37,7 @@ services:
     command: >
       /bin/sh -c
       "
+      . /commands/keep-alive.sh & 
       . /commands/attach-peer.sh
       "
     depends_on:
