@@ -3,8 +3,10 @@
 while true; do
     sleep 60s
     enode=`cat /boot-node-info/enode`
+    temp="${enode%\"}"
+    enode="${temp#\"}"
     if [ "$?" -eq "0" ]; then
-        geth attach datadir/geth.ipc --exec \
-            "if(admin.peers.length===0){admin.addPeer(\"${enode}\")}"
+        geth attach /datadir/geth.ipc --exec \
+            "if(admin.peers.length===0){admin.addPeer(\"${enode}\")}" &> /dev/null
     fi
 done
