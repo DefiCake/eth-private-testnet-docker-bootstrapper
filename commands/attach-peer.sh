@@ -20,7 +20,7 @@ echo "with network ID ${networkId}"
 geth --nousb --datadir /datadir --netrestrict 172.0.254.0/24 --syncmode full \
     --bootnodes $enode --networkid ${networkId} \
     --rpc --rpcport "7545" --rpcaddr "0.0.0.0" --rpccorsdomain "*" \
-    --rpcapi eth,net,web3,txpool \
+    --rpcapi eth,net,web3,txpool,debug \
     --ws --wsport "7546" --wsaddr "0.0.0.0"  --wsorigins "*" \
-    --wsapi eth,net,web3,txpool
+    --wsapi eth,net,web3,txpool,debug
     
