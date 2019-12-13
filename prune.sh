@@ -5,6 +5,9 @@
 # between the master (mining) node and 
 # the member node.
 
+# Check docker logs node2.testnet.geodb.com to
+# locate the conflicting node and prune it
+
 if [ -z  $1 ]; then
     echo "Please run prune.sh <BLOCK TO PRUNE>, in hex format"
     exit 1
