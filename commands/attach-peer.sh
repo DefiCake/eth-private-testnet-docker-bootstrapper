@@ -18,6 +18,7 @@ echo "Attaching peer to ${enode}"
 echo "with network ID ${networkId}"
 
 geth --nousb \
+    --gcmode archive \
     --datadir /datadir \
     --netrestrict 172.0.254.0/24 \
     --syncmode full \
