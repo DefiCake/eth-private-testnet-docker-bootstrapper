@@ -22,8 +22,9 @@ fi
 
 if [ ! -d "/datadir/geth" ]; then
     echo "Initializing /datadir for master node"
-    geth --nousb --datadir /datadir account import /credentials/private_key.txt \
-    --password /credentials/password.txt;
+    geth --nousb --datadir /datadir account \
+        import /credentials/private_key.txt \
+        --password /credentials/password.txt;
     geth --nousb --datadir /datadir init /genesis/genesis.json;
 fi
 
@@ -32,9 +33,16 @@ account="0x${account}"
 
 networkId=`cat /credentials/network.txt`
 
-geth --nousb --datadir /datadir --nat extip:`hostname -i` --netrestrict 172.0.254.0/24 \
+geth --nousb \
+    --datadir /datadir \
+    --nat extip:`hostname -i` \
+    --netrestrict 172.0.254.0/24 \
+    --verbosity 4 \
+    --vmodule eth/*=6 \
     --unlock ${account} \
     --password /credentials/password.txt \
-    --mine --minerthreads=1 --miner.gasprice 0  \
-    --miner.gastarget 15000000 --miner.noverify \
+    --mine --minerthreads=1 \
+    --miner.gasprice 0  \
+    --miner.gastarget 15000000 \
+    --miner.noverify \
     --networkid ${networkId};
