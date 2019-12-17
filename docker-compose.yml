@@ -1,8 +1,8 @@
 version: '2.1'
 
 services:
-  node1.testnet.geodb.com:
-    container_name: node1.testnet.geodb.com
+  poa-master-node:
+    container_name: poa-master-node
     image: ethereum/client-go:alltools-stable
     working_dir: /
     restart: always
@@ -29,8 +29,8 @@ services:
       timeout: 1s
       retries: 20
 
-  node2.testnet.geodb.com:
-    container_name: node2.testnet.geodb.com
+  poa-member-node:
+    container_name: poa-member-node
     image: ethereum/client-go:alltools-stable
     working_dir: /
     restart: always
@@ -41,7 +41,7 @@ services:
       . /commands/attach-peer.sh
       "
     depends_on:
-      node1.testnet.geodb.com:
+      poa-master-node:
         condition: service_healthy
     volumes:
       - ./boot-node-info:/boot-node-info
