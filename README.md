@@ -13,9 +13,9 @@ To generate a `genesis.json`, use the following docker image and command:
 
 `docker run -it ethereum/client-go:alltools-stable`
 
-And then, inside, run the `puppeth` command. Follow the menus to create and export the `genesis.json` file. The process will also generate some other files which you can ignore.
+And then, inside, run the `puppeth` command. Follow the menus to create and export the `genesis.json` file. The process will also generate some other files which you can ignore. Be wary that puppeth will ask you about the protocl type (input `clique`) and the addresses that can generate new blocks.
 
-Afterwards, it is needed to setup the `credentials` directory. Generate a `private_key.txt` containing a valid Ethereum private key, along with a `password.txt` to encrypt the store. Additionally, write a `network.txt` file containing the network ID for your private testnet, and make sure it coincides with `chainID` field inside `genesis.jsonp`. Place these 3 files (`private_key.txt`, `password.txt`, `network.txt`) in the `credentials` folder.
+Afterwards, it is needed to setup the `credentials` directory. Generate a `private_key.txt` containing a valid Ethereum private key and corresponds to the public address that was set in `puppeth` previously, along with a `password.txt` to encrypt the store. Additionally, write a `network.txt` file containing the network ID for your private testnet, and make sure it coincides with `chainID` field inside `genesis.jsonp`. Place these 3 files (`private_key.txt`, `password.txt`, `network.txt`) in the `credentials` folder.
 
 Finally, run the containers:
 
