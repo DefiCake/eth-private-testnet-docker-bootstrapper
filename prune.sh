@@ -5,7 +5,7 @@
 # between the master (mining) node and 
 # the member node.
 
-# Check docker logs node2.testnet.geodb.com to
+# Check docker logs poa-member-node to
 # locate the conflicting node and prune it
 
 if [ -z  $1 ]; then
@@ -16,9 +16,9 @@ fi
 BLOCK_NUMBER_HEX=$1
 
 # First, shutdown node2
-docker kill node2.testnet.geodb.com
+docker kill poa-member-node
 echo "  Pruning from block > $BLOCK_NUMBER_HEX"
-docker exec -i node1.testnet.geodb.com sh -c "geth attach /datadir/geth.ipc --exec 'debug.setHead(\"$BLOCK_NUMBER_HEX\")' &> /dev/null"
+docker exec -i poa-master-node sh -c "geth attach /datadir/geth.ipc --exec 'debug.setHead(\"$BLOCK_NUMBER_HEX\")' &> /dev/null"
 
 echo "  RESTARTING CONTAINERS"
 docker-compose down
