@@ -55,6 +55,7 @@ services:
     ports:
       - 7545:7545
       - 7546:7546
+    ipc: host
 
 networks:
   poa:
